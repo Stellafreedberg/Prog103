@@ -15,14 +15,23 @@ dna2 <- "attattaggaacaca"
 # Use them to print whether or not the following statements are TRUE or FALSE.
 #
 # w is greater than 10
+w>10
 # "green" is in colors
+"green"%in%colors
 # x is greater than y
+x>y
 # Each value in masses is greater than 40.
+masses>40
 # 2 * x + 0.2 is equal to y
+2*x + 0.2 ==y
 # dna1 is the same as dna2
+dna1==dna2
 # dna1 is not the same as dna2
+dna1 != dna2
 # w is greater than x, or y is greater than z
+w>x|y>z
 # x times w is between 13.2 and 13.5
+x * w ==(<13.2 & >13.5)
 # Each mass in masses is between 30 and 50.
 
 
@@ -32,8 +41,8 @@ dna2 <- "attattaggaacaca"
 # it sets y <- 10.
 
 age_class = "egg"
-if () {
-
+if (age_class=="egg") {
+y<-10
 }
 y
 
@@ -41,8 +50,10 @@ y
 # it sets y <- 10 and if age_class is equal to “larva” it sets y <- 5.
 
 age_class = "larva"
-if () {
-
+if (age_class=="egg") {
+  y<-10
+} else if(age_class=="larva"){
+  y<-5
 }
 y
 
@@ -51,8 +62,12 @@ y
 # age_class is something else then it sets the value of y <- 0.
 
 age_class = "adult"
-if () {
-
+if (age_class=="egg") {
+  y<-10
+} else if(age_class=="larva"){
+  y<-5
+} else{
+  y<-0
 }
 y
 
@@ -60,7 +75,20 @@ y
 # age_class as an argument and returns y. Call this function 4 times, once with
 # each of the following values for age_class: “egg”, “larva”, “adult”,
 # “senescent”.
-
+function_age <- function(age_class) {
+  if (age_class=="egg") {
+    y<-10
+  } else if(age_class=="larva"){
+    y<-5
+  } else{
+    y<-0
+  }
+  return(y)
+}
+print(function_age("egg"))
+print(function_age("larva"))
+print(function_age("adult"))
+print(function_age("senescent"))
 
 # Repeating yourself with vectorized functions ----------------------------
 
@@ -68,8 +96,8 @@ y
 # just their first and last characters. Verify it works on the names of sharks
 # below.
 sharks <- c("thresher", "mako", "tiger", "hammerhead")
-shorten_string <- function(???) {
-  first_letter <- substr(???, 1, 1)
+shorten_string <- function(sharks) {
+  first_letter <- substr(1, 1, 1)
   # Hint: nchar() returns the number of characters in a string
   last_letter <- substr(???, nchar(???), nchar(???))
   result <- paste(first_letter, last_letter, sep = "")
@@ -85,9 +113,9 @@ shorten_string(sharks)
 
 # 2. a and b for a shortfin mako are estimated to be 5.243e-6 and 3.141. What
 # are the estimated masses of sharks that are 100, 200, and 300 cm long?
-a <- ???
-b <- ???
-??? * c(???)^???
+a <- 5.243e-6
+b <- 3.141
+a * c(L)^b
 
 # 3. Write a function called shortfin_mako_mass_kg that takes a parameter L_cm
 # and returns the estimated masses of shortfin makos with fork lengths L_cm. Use
